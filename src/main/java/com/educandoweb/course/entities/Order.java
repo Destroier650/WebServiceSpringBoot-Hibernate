@@ -15,7 +15,7 @@ public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
@@ -29,19 +29,19 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(Long Id, Instant moment, OrderStatus orderStatus, User client) {
-        this.Id = Id;
+    public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
+        this.id = id;
         this.moment = moment;
         setOrderStatus(orderStatus);
         this.client = client;
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        id = id;
     }
 
     public Instant getMoment() {
@@ -75,11 +75,11 @@ public class Order implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return Objects.equals(Id, order.Id);
+        return Objects.equals(id, order.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id);
+        return Objects.hash(id);
     }
 }
